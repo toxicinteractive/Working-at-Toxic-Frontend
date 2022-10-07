@@ -1,15 +1,15 @@
-# Uppdrag före intervju
+# Pre-interview assignment
 
-## Systembeskrivning
-Det här är ett online bibliotek. I biblioteket vill man kunna lista samtliga böcker med omslag och titel, när användaren håller muspekaren över en bok kommer de att se bokens författare. Man skall kunna hitta en bok givet titel eller författare, och lista böckerna efter senast
-När användaren klickar på en bok skall en ny sida med detaljerad information om den valda boken.
+## System description
+This is an online library. In the library, the user want to be able to list all books with cover and title, when the user hovers over a book, they will see the book's author. You should be able to find a book given a title or author, and list the books by latest released.
+When the user clicks on a book, a new page with detailed information about the selected book will appear.
 
-## Instruktioner
-* Dela eller klona detta repo
-* Gör en uppskattning av hur lång tid du tror att det skulle ta att slutföra detta projekt
-* Använda valfritt frontend ramverk
-* Använde api:et, books.json
-* Inkludera instruktioner om hur du kör din applikation i denna README
-* Spendera cirka 4-6 timmar på detta projekt
+## Instructions
+* Fork or clone this repository (click "Use this Template")
+* Make an estimate on how long you think it would take to complete this project
+* Use any frontend framework
+* Used the api, books.json
+* Include instructions on how to run your project in this README
+* Spend approximately 4-6 hours on this project
 
-När du är klar, helst inom en vecka efter att du sett detta, skicka oss en pull-request med ditt arbete i det här repot! Bonuspoäng om dina åtaganden är beskrivande, och vad framtida utveckling av projektet skulle kunna vara. 
+When you're done, preferably within a week of seeing this, send us a pull request with your work in this repo! Bonus points if your commitments are descriptive, and what future development of the project could be.
