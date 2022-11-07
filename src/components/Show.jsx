@@ -1,7 +1,7 @@
 'use strict';
 import React from "react";
 
-export default class Movie extends React.Component {
+export default class Show extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,9 +11,9 @@ export default class Movie extends React.Component {
 
     render() {
         return(
-            <div className="movie">
+            <div className="show">
                 <h5>{this.props.name}</h5>
-                <img src={Movie.poster_path} alt="MovieThumbnail"></img>
+                <img src={this.props.image} alt="ShowThumbnail"></img>
             </div>
         )
     }
