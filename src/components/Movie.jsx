@@ -13,6 +13,7 @@ export default class Movie extends React.Component {
         return(
             <div className="movie">
                 <h5>{this.props.name}</h5>
+                <img src={Movie.poster_path} alt="MovieThumbnail"></img>
             </div>
         )
     }

@@ -14,12 +14,11 @@ export default class MovieList extends React.Component {
         console.log(this.state.list);
     }
 
-
     render() {
         return (
-            <>
+            <div className='movie-list'>
                 {this.props.list ? <>{this.props.list.map((movie) => { return (<Movie name={movie.name} key={movie.id} />) })}</> : <></>}
-            </>
+            </div>
         )
     }
 }

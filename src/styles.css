@@ -1,0 +1,20 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0;
+    margin: 0;
+    color:white;
+}
+
+.movie {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(48, 48, 48);
+    margin: 1em;
+    padding: 1em;
+}
+
+.movie-list {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(77, 77, 77)
+}
