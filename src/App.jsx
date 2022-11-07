@@ -1,10 +1,13 @@
 'use strict';
 import React from "react";
+import movies from "./data.json"
+import MovieList from "./components/MovieList";
 
 const App = () => {
+    console.log(movies);
     return (
       <>
-      Hello World!
+      <MovieList list={movies.results} />
       </> 
     )
 }
