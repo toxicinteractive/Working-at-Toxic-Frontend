@@ -25,7 +25,10 @@ export default class MovieList extends React.Component {
     }
 
     updateFiltering = (e) => {
-        this.setState({ filtering: e.target })
+        const filter = e.target;
+        const listSource = [...this.state.list];
+        const filteredList = listSource
+        this.setState({ filteredList: filteredList });
     }
 
     render() {

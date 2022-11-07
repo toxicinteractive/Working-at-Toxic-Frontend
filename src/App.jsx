@@ -1,14 +1,19 @@
 'use strict';
 import React from "react";
-import movies from "./data.json"
-import MovieList from "./components/MovieList";
+import getShows, { getByPopularity } from "./domain/data";
+import shows from "./data.json"
+import ShowList from "./components/ShowList";
 
 const App = () => {
-    console.log(movies);
+
+    /*   const showList = await getShows();
+  
+      console.log('Hello API', showList); */
+
     return (
-      <>
-      <MovieList list={movies.results} />
-      </> 
+        <>
+            <ShowList list={shows.results} />
+        </>
     )
 }
 

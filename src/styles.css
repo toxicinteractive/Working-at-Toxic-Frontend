@@ -5,7 +5,7 @@
     color:white;
 }
 
-.movie {
+.show {
     display: flex;
     flex-direction: column;
     background-color: rgb(48, 48, 48);
@@ -13,7 +13,7 @@
     padding: 1em;
 }
 
-.movie-list {
+.show-list {
     display: flex;
     flex-direction: column;
     background-color: rgb(77, 77, 77)
