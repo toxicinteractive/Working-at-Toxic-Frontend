@@ -7,6 +7,7 @@
 
 body {
     background-color: black;
+    height: 100%;
 }
 
 .app {
@@ -16,6 +17,7 @@ body {
     align-items: center;
     justify-self: baseline;
     width: 100%;
+    height: 100%;
 }
 
 .show {
@@ -55,11 +57,39 @@ body {
 .show-details {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: rgb(41, 41, 41);
     padding: 1em;
+    width: 20em;
+    gap: 1em;
 }
 
-input, button  {
+.show-details-info {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    flex-grow: 1;
+}
+
+.show-details-summary {
+    display: flex;
+    flex: 1;
+    flex-grow: 1;
+    width: 100%;
+    gap: 1em;
+}
+
+.show-details-thumbnail {
+    display: flex;
+    align-self: flex-end;
+}
+
+.show-details-back-button {
+    margin-bottom: 0;
+}
+
+input,
+button {
     color: white;
     background-color: rgb(43, 43, 43);
     border-radius: 1em;
@@ -73,14 +103,12 @@ button:hover {
     cursor: pointer;
 }
 
-/* .void {
-    position: absolute;
-    z-index: 100;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100vw;
-    height: 100%
-}
- */
 ul {
     list-style: none;
 }
+
+@media (min-width: 800px) {
+    .show-details {
+        width: 50em;
+    }
+  }
