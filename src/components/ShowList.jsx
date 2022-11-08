@@ -1,6 +1,6 @@
 'use strict';
 import React from "react";
-import getShows, { getByPopularity } from "../domain/data";
+import { getByPopularity } from "../domain/shows";
 import Show from "./Show";
 
 export default class MovieList extends React.Component {
@@ -25,7 +25,7 @@ export default class MovieList extends React.Component {
     }
 
     updateFiltering = (e) => {
-        const filter = e.target;
+        const filter = e.target.value;
         const listSource = [...this.state.list];
         const filteredList = listSource
         this.setState({ filteredList: filteredList });

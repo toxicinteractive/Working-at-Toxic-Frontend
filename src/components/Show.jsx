@@ -9,11 +9,17 @@ export default class Show extends React.Component {
         }
     }
 
+    imagePath = () => {
+        const baseUrl = 'https://www.themoviedb.org/t/p/w220_and_h330_face/';
+        const fullUrl = `${baseUrl}${this.props.image}`;
+        return fullUrl;
+    }
+
     render() {
         return(
             <div className="show">
                 <h5>{this.props.name}</h5>
-                <img src={this.props.image} alt="ShowThumbnail"></img>
+                <img className='show-thumbnail' src={this.imagePath()} alt="ShowThumbnail"></img>
             </div>
         )
     }
