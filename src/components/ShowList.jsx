@@ -9,7 +9,8 @@ export default class MovieList extends React.Component {
         this.state = {
             list: [],
             filteredList: [],
-            sortByDate: false
+            sortByDate: true,
+            filterValue: ''
         }
     }
 
@@ -28,8 +29,12 @@ export default class MovieList extends React.Component {
 
     updateFiltering = (e) => {
         const filterValue = e.target.value.toLowerCase();
+        this.setState({ filterValue: filterValue }, this.filterList(filterValue))
+    }
+
+    filterList = (filterValue) => {
         const listSource = [...this.state.list];
-        
+
         const filteredList = listSource.map((element) => {
 
             if (element.name.toLowerCase().includes(filterValue))
@@ -47,7 +52,7 @@ export default class MovieList extends React.Component {
     }
 
     toggleDateSorting = () => {
-        this.setState({ sortByDate: !this.state.sortByDate })
+        this.setState({ sortByDate: !this.state.sortByDate }, this.filterList(this.state.filterValue));
     }
 
     render() {
