@@ -11,13 +11,17 @@ body {
 
 .app {
     display: flex;
-    justify-content: baseline;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-self: baseline;
     width: 100%;
 }
 
 .show {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: rgb(48, 48, 48);
     margin: 1em;
     padding: 1em;
@@ -38,8 +42,16 @@ body {
 }
 
 .show-hover-info {
-    position: fixed;
+    position: sticky;
     background-color: rgb(26, 26, 26);
     z-index: 1000;
     padding: 1em;
+}
+
+input  {
+    color: white;
+    background-color: rgb(43, 43, 43);
+    border-radius: 1em;
+    padding: 1em;
+    border-style: none;
 }
