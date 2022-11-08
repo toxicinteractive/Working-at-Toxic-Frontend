@@ -8,7 +8,8 @@ export default class MovieList extends React.Component {
         super(props)
         this.state = {
             list: [],
-            filteredList: []
+            filteredList: [],
+            sortByDate: false
         }
     }
 
@@ -16,6 +17,7 @@ export default class MovieList extends React.Component {
         const response = await getByPopularity();
         const list = await response.results;
         this.setState({ list: list });
+        this.setState({ filteredList: list });
     }
 
     async getList() {
@@ -25,10 +27,27 @@ export default class MovieList extends React.Component {
     }
 
     updateFiltering = (e) => {
-        const filter = e.target.value;
+        const filterValue = e.target.value.toLowerCase();
         const listSource = [...this.state.list];
-        const filteredList = listSource
-        this.setState({ filteredList: filteredList });
+        
+        const filteredList = listSource.map((element) => {
+
+            if (element.name.toLowerCase().includes(filterValue))
+                return element;
+        })
+
+        const resultList = filteredList.filter((x) => x !== undefined)  // Removes undefined entries
+
+        if (this.state.sortByDate) {
+            const sortedList = resultList.sort((a, b) => (a.first_air_date < b.first_air_date) ? 1 : -1);
+            this.setState({ filteredList: sortedList });
+        } else {
+            this.setState({ filteredList: resultList });
+        }
+    }
+
+    toggleDateSorting = () => {
+        this.setState({ sortByDate: !this.state.sortByDate })
     }
 
     render() {
@@ -37,8 +56,12 @@ export default class MovieList extends React.Component {
                 <div className='filter-container'>
                     <input placeholder='Filter by name...' onChange={this.updateFiltering.bind(this)}></input>
                 </div>
+                <label>
+                    <input type='checkbox' onChange={this.toggleDateSorting} checked={this.state.sortByDate} />
+                    Sort by most recent
+                </label>
                 <div className='show-list'>
-                    {this.state.list.length > 0 ? <>{this.state.list.map((show) => { return (<Show show={show} key={show.id} expandShow={this.props.expandShow}/>) })}</> : <></>}
+                    {this.state.filteredList.length > 0 ? <>{this.state.filteredList.map((show) => { return (<Show show={show} key={show.id} expandShow={this.props.expandShow} />) })}</> : <></>}
                 </div>
             </>
         )

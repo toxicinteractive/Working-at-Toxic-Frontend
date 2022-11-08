@@ -26,10 +26,6 @@ export default class Show extends React.Component {
         this.setState({ isHovered: false });
     }
 
-/*     expandDetails = () => {
-        this.setState({ expanded: true })
-    } */
-
     handleClick = () => {
         console.log(this.props.show);
         this.props.expandShow(this.props.show)
@@ -44,6 +40,7 @@ export default class Show extends React.Component {
                     <h5>{this.props.show.name}</h5>
                     {this.state.isHovered ? <ShowHoverInfo rating={this.props.show.vote_average} /> : <></>}
                     <img className='show-thumbnail' src={this.imagePath()} alt="ShowThumbnail"></img>
+                    <p>{this.props.show.first_air_date}</p>
                 </div>
             </>
         )
