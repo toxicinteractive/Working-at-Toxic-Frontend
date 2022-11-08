@@ -5,9 +5,9 @@ import ShowList from "./components/ShowList";
 const App = () => {
 
     return (
-        <>
+        <div className="app">
             <ShowList />
-        </>
+        </div>
     )
 }
 

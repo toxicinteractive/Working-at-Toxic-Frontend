@@ -2,7 +2,17 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 0;
     margin: 0;
-    color:white;
+    color: white;
+}
+
+body {
+    background-color: black;
+}
+
+.app {
+    display: flex;
+    justify-content: baseline;
+    width: 100%;
 }
 
 .show {
@@ -11,14 +21,25 @@
     background-color: rgb(48, 48, 48);
     margin: 1em;
     padding: 1em;
+    width: 75%;
 }
 
 .show-list {
     display: flex;
     flex-direction: column;
-    background-color: rgb(77, 77, 77)
+    background-color: rgb(77, 77, 77);
+    width: fit-content;
+    align-items: center;
+    justify-self: baseline;
 }
 
 .show-thumbnail {
     width: 10em;
+}
+
+.show-hover-info {
+    position: fixed;
+    background-color: rgb(26, 26, 26);
+    z-index: 1000;
+    padding: 1em;
 }
