@@ -5,7 +5,7 @@ import Show from "./Show";
 
 export default class MovieList extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             list: [],
             filteredList: [],
@@ -29,7 +29,7 @@ export default class MovieList extends React.Component {
 
     updateFiltering = (e) => {
         const filterValue = e.target.value.toLowerCase();
-        this.setState({ filterValue: filterValue }, this.filterList(filterValue))
+        this.setState({ filterValue: filterValue }, this.filterList(filterValue));
     }
 
     filterList = (filterValue) => {
@@ -37,7 +37,7 @@ export default class MovieList extends React.Component {
 
         const filteredList = listSource.map((element) => {
 
-            if (element.name.toLowerCase().includes(filterValue))
+            if (element.name.toLowerCase().includes(filterValue));
                 return element;
         })
 

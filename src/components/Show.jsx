@@ -19,7 +19,7 @@ export default class Show extends React.Component {
     }
 
     onMouseEnter = () => {
-        this.setState({ isHovered: true })
+        this.setState({ isHovered: true });
     }
 
     onMouseLeave = () => {
@@ -28,7 +28,7 @@ export default class Show extends React.Component {
 
     handleClick = () => {
         console.log(this.props.show);
-        this.props.expandShow(this.props.show)
+        this.props.expandShow(this.props.show);
     }
 
     render() {
