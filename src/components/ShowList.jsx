@@ -38,7 +38,7 @@ export default class MovieList extends React.Component {
                     <input placeholder='Filter by name...' onChange={this.updateFiltering.bind(this)}></input>
                 </div>
                 <div className='show-list'>
-                    {this.state.list.length > 0 ? <>{this.state.list.map((show) => { return (<Show name={show.name} image={show.poster_path} rating={show.vote_average} key={show.id} />) })}</> : <></>}
+                    {this.state.list.length > 0 ? <>{this.state.list.map((show) => { return (<Show show={show} key={show.id} expandShow={this.props.expandShow}/>) })}</> : <></>}
                 </div>
             </>
         )

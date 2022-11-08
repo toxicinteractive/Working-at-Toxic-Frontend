@@ -1,19 +1,20 @@
 'use strict';
 import React from "react";
-import { getShowById } from "../domain/shows";
 import ShowHoverInfo from "./ShowHoverInfo";
+import ShowDetails from "./ShowDetails";
 
 export default class Show extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isHovered: false
+            isHovered: false,
+            expanded: false
         }
     }
 
     imagePath = () => {
         const baseUrl = 'https://www.themoviedb.org/t/p/w220_and_h330_face/';
-        const fullUrl = `${baseUrl}${this.props.image}`;
+        const fullUrl = `${baseUrl}${this.props.show.poster_path}`;
         return fullUrl;
     }
 
@@ -25,18 +26,26 @@ export default class Show extends React.Component {
         this.setState({ isHovered: false });
     }
 
+/*     expandDetails = () => {
+        this.setState({ expanded: true })
+    } */
+
+    handleClick = () => {
+        console.log(this.props.show);
+        this.props.expandShow(this.props.show)
+    }
+
     render() {
         return (
             <>
-               
-                <div className="show" onMouseEnter={this.onMouseEnter.bind(this)} onMouseLeave={this.onMouseLeave.bind(this)}>
-                    <h5>{this.props.name}</h5>
-                    {this.state.isHovered ? <ShowHoverInfo rating={this.props.rating}/> : <></>}
+                {this.state.expanded? <ShowDetails id={this.props.show.id} />: <></>}
+
+                <div className="show" onMouseEnter={this.onMouseEnter.bind(this)} onMouseLeave={this.onMouseLeave.bind(this)} onClick={this.handleClick}>
+                    <h5>{this.props.show.name}</h5>
+                    {this.state.isHovered ? <ShowHoverInfo rating={this.props.show.vote_average} /> : <></>}
                     <img className='show-thumbnail' src={this.imagePath()} alt="ShowThumbnail"></img>
-                    
                 </div>
             </>
-
         )
     }
 }
