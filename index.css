@@ -1,0 +1,9 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .grid-item{
+    margin: 5px;
+    background-color: rgb(197, 197, 197);
+  }
