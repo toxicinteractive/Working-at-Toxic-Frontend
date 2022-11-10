@@ -1,7 +1,9 @@
 <h1>Toxic TvSeries</h1>
 <div class="grid-container">
   {{#if series.length}}
-  {{#each series}} <div class="grid-item">
+  {{#each series}}
+  <a href="/individual_series/{{id}}">
+   <div class="grid-item">
     <img class="series-image" src='/assets{{poster_path}}' alt="{{name}} poster not found">
     <h1>{{name}}</h1>
     {{#if vote_average}}
@@ -10,7 +12,7 @@
     <h3 class="series-rating">Rating: Not availabe</h3>
     {{/if}}
   </div>
+  </a>
   {{/each}}
   {{/if}}
-
 </div>
