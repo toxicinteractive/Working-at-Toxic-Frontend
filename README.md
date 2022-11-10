@@ -14,3 +14,9 @@ When the user clicks on a show, a new page with detailed information about the s
 
 When you're done, preferably within a week of seeing this, send us a pull request with your work in this repo! Bonus points if your commitments are descriptive, and what future development of the project could be.
 
+## Notes from me
+I have a clear view of how the complete website should look and how to structure the tv series.
+
+Although, I am Struggling with extracting data from JSON, haven't touched .json, APIs etc since I studied at my last
+program in 2019.
+
