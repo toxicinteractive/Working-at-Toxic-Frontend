@@ -2,10 +2,13 @@
 <div class="grid-container">
   {{#if series.length}}
   {{#each series}} <div class="grid-item">
-    
-      <img class="series-image" src='/assets{{poster_path}}' alt="/assets{{backdrop_path}}">
-  
+    <img class="series-image" src='/assets{{poster_path}}' alt="{{name}} poster not found">
     <h1>{{name}}</h1>
+    {{#if vote_average}}
+    <h3 class="series-rating">Rating:{{vote_average}}</h3>
+    {{else}}
+    <h3 class="series-rating">Rating: Not availabe</h3>
+    {{/if}}
   </div>
   {{/each}}
   {{/if}}

@@ -1,17 +1,24 @@
 .body{
+  font-family: 'Poppins', sans-serif;
   color: rgb(33, 33, 33);
   background-color: rgb(239, 239, 239);
 }
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 
   .grid-item{
     margin: 5px;
     background-color: rgb(197, 197, 197);
   }
+  .grid-item:hover .series-rating{
+    visibility: visible;
+  }
 
   .series-image{
     width: 100%;
+  }
+  .series-rating{
+    visibility: hidden;
   }
