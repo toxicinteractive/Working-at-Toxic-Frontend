@@ -6,7 +6,18 @@
     </div>
     <div class="individual-grid-item">
         <h1>{{series.name}}</h1>
-        <h4>{{series.overview}}</h4>
+        {{#if series.overview}}
+        <h3>Overview: {{series.overview}}</h3>
+        {{else}}
+        <h3>Overview: Not availabe</h3>
+        {{/if}}
+        {{#if series.vote_average}}
+        <h3>Rating: {{series.vote_average}}</h3>
+        {{else}}
+        <h3>Rating: Not availabe</h3>
+        {{/if}}
+        <h3>First aired: {{series.first_air_date}}</h3>
+        <a href="/"><button>Back</button></a>
     </div>
 </div>
 

@@ -1,6 +1,8 @@
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const app = express()
+const bodyParser = require('body-parser')
+const parseForm = bodyParser.urlencoded({ extended: false })
 const fs = require('fs');
 
 //JSON
@@ -22,12 +24,24 @@ app.get('/', function (request, response) {
     }
     response.render('index.hbs', model)
 })
+app.post('/search', parseForm, function(request, response){
+    const searchInput = request.body.searchBar
+    const searchedSeries = tvSeries.filter(series=>{
+        return series.name.includes(searchInput)
+    })
+
+    console.log('Search input: ', searchInput)
+    console.log('Search resut', searchedSeries)
+    const model ={
+        series: searchedSeries
+    }
+    response.render('search_results.hbs', model)
+})
 app.get('/individual_series/:id', function(request,response){
     const clickedSeriesId = request.params.id
     const clickedSeries = tvSeries.find(series=>{
         return series.id == clickedSeriesId
     })
-    console.log('Clicked Series :)',clickedSeries)
     const model ={
         series: clickedSeries
     }

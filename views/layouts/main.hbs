@@ -8,11 +8,20 @@
     <link rel="stylesheet" href="/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <title>Hello Toxic</title>
 </head>
 
 <body>
+    <h1>Toxic TvSeries</h1>
+
+    <form method='POST' action="/search">
+        <label for="searchBar">Search for series: </label>
+        <input name="searchBar" type="text" required>
+        <input type="submit">
+    </form>
+
+
     {{{body}}}
 </body>
 
