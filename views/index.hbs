@@ -1,9 +1,10 @@
+<h1>Toxic TvSeries</h1>
 <div class="grid-container">
   {{#if series.length}}
   {{#each series}} <div class="grid-item">
-    <div class="series-img-container">
-      <img src='/assets{{poster_path}}' alt="">
-    </div>
+    
+      <img class="series-image" src='/assets{{poster_path}}' alt="/assets{{backdrop_path}}">
+  
     <h1>{{name}}</h1>
   </div>
   {{/each}}
