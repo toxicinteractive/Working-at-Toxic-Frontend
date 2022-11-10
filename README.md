@@ -25,4 +25,7 @@ Doing good, much progress quite fast after figuring the JSON stuff out.
 Focusing on functionality > looks
 ## 3rd hour
 Search function is a struggle
+## 4th hour
+Finally got search function for title working, this was my first time implementing a search so I
+did atleast get it working :)
 
