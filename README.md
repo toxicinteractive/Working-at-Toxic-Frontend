@@ -14,8 +14,18 @@ When the user clicks on a show, a new page with detailed information about the s
 
 When you're done, preferably within a week of seeing this, send us a pull request with your work in this repo! Bonus points if your commitments are descriptive, and what future development of the project could be.
 
+## How to run
+0. Have node.js installed
+1. Clone project
+2. run the command 'npm install'
+3. run the command 'node app.js'
+4. Visit http://localhost:8080/ in your browser
+
 ## Notes from me
 I would estimate that this would take ME roughly 8 hours to complete this project.
+
+I would've loved to use React for this project but since I've only seen a "how to install React" video I chose 
+to use node + express with express handlebars for this project.
 ## 1st hour
 I have a clear view of how the complete website should look and how to structure the tv series.
 Although, I am Struggling with extracting data from JSON, haven't touched .json, APIs etc since I studied at my last
@@ -28,4 +38,11 @@ Search function is a struggle
 ## 4th hour
 Finally got search function for title working, this was my first time implementing a search so I
 did atleast get it working :)
+## 5th hour
+Only spent on css and making sure the code is uniform and clean
+
+## Future Developments
+* Improve the search function, right now you can only search for series title and it is case sensitive.
+* Overall design improvements, e.g the series cards can be improved a lot.
+* Links to where you can stream each series
 

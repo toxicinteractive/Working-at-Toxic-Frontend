@@ -9,18 +9,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-    <title>Hello Toxic</title>
+    <title>Toxic Series</title>
 </head>
-
 <body>
-    <h1>Toxic TvSeries</h1>
+    <span id="header">
+        <a href="/"><img id="toxic-logo" src="/assets/Toxic-logo-white.png" alt=""></a>
+        <h1 id="header-title">TvSeries</h1>
+    </span>
 
-    <form method='POST' action="/search">
-        <label for="searchBar">Search for series: </label>
+    <form id="search-form" method='POST' action="/search">
+        <label id="search-bar-label" for="searchBar">Search for series: </label>
         <input name="searchBar" type="text" required>
         <input type="submit">
     </form>
-
 
     {{{body}}}
 </body>

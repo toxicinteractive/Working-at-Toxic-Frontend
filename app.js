@@ -10,7 +10,7 @@ let rawdata = fs.readFileSync('data.json')
 let parsedData = JSON.parse(rawdata)
 let tvSeries = parsedData.results
 //sorting by latest airdate
-tvSeries.sort((a,b) =>  new Date(b.first_air_date) - new Date(a.first_air_date));
+tvSeries.sort((a, b) => new Date(b.first_air_date) - new Date(a.first_air_date));
 
 
 app.engine("hbs", expressHandlebars.engine({
@@ -24,30 +24,27 @@ app.get('/', function (request, response) {
     }
     response.render('index.hbs', model)
 })
-app.post('/search', parseForm, function(request, response){
+app.post('/search', parseForm, function (request, response) {
     const searchInput = request.body.searchBar
-    const searchedSeries = tvSeries.filter(series=>{
+    const searchedSeries = tvSeries.filter(series => {
         return series.name.includes(searchInput)
     })
-
     console.log('Search input: ', searchInput)
     console.log('Search resut', searchedSeries)
-    const model ={
+    const model = {
         series: searchedSeries
     }
     response.render('search_results.hbs', model)
 })
-app.get('/individual_series/:id', function(request,response){
+app.get('/individual_series/:id', function (request, response) {
     const clickedSeriesId = request.params.id
-    const clickedSeries = tvSeries.find(series=>{
+    const clickedSeries = tvSeries.find(series => {
         return series.id == clickedSeriesId
     })
-    const model ={
+    const model = {
         series: clickedSeries
     }
     response.render('individual_series.hbs', model)
-
 })
-
 app.listen(8080)
 console.log('Listening to port 8080')

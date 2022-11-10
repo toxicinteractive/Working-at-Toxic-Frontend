@@ -1,39 +1,92 @@
-body{
+body {
   font-family: 'Ubuntu', sans-serif;
   color: rgb(33, 33, 33);
-  background-color: rgb(239, 239, 239);
+  background-color: #44BB80;
 }
+
+input {
+  border-radius: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(33, 33, 33);
+}
+
+button{
+  width: 20%;
+  border-radius: 5px;
+  color: white;
+  background-color: #010201;
+}
+
 .grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.individual-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.grid-item {
+  margin: 5px;
+  background-color: rgb(244, 244, 244);
+  min-height: 100vh;
+  border-radius: 15px;
+}
+.individual-grid-item{
+  color: white;
+}
+.grid-item:hover .series-rating {
+  visibility: visible;
+}
+.series-image {
+  width: 100%;
+}
+.series-rating {
+  padding-left: 10px;
+  padding-right: 10px;
+  visibility: hidden;
+}
+.series-image-individual {
+  height: 90vh;
+}
+.series-title {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 17pt;
+}
+
+#header {
+  display: inline;
+}
+#search-form {
+  margin-bottom: 20px;
+}
+#toxic-logo {
+  max-width: 20%;
+  float: left;
+}
+#header-title{
+  color: white;
+  font-size: 32pt;
+}
+#search-bar-label{
+  color: white;
+}
+
+
+/* Responsive Grid */
+@media only screen and (max-width: 800px) {
+  .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-  .individual-grid-container{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-  }
+}
 
-  .grid-item{
-    margin: 5px;
-    background-color: rgb(197, 197, 197);
-    min-height: 100vh;
-    border-radius: 15px;
+@media only screen and (max-width: 600px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
-  .grid-item:hover .series-rating{
-    visibility: visible;
-  }
-
-  .series-image{
-    width: 100%;
-  }
-  .series-rating{
-    visibility: hidden;
-  }
-
-  .series-image-individual{
-    height: 90vh;
-  }
-
-  a{
-    text-decoration: none;
-    color: rgb(33, 33, 33);
-  }
+}

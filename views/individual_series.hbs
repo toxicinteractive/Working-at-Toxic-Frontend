@@ -1,5 +1,4 @@
 {{#if series}}
-
 <div class="individual-grid-container">
     <div class="individual-grid-item">
         <img class="series-image-individual" src='/assets{{series.poster_path}}' alt="{{series.name}} poster not found">
@@ -7,7 +6,8 @@
     <div class="individual-grid-item">
         <h1>{{series.name}}</h1>
         {{#if series.overview}}
-        <h3>Overview: {{series.overview}}</h3>
+        <h3>Overview:</h3>
+        <h4>{{series.overview}}</h4>
         {{else}}
         <h3>Overview: Not availabe</h3>
         {{/if}}
@@ -20,7 +20,6 @@
         <a href="/"><button>Back</button></a>
     </div>
 </div>
-
-
-
+{{else}}
+<h1>Could not display that series</h1>
 {{/if}}
