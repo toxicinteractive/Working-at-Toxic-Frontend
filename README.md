@@ -14,3 +14,21 @@ When the user clicks on a show, a new page with detailed information about the s
 
 When you're done, preferably within a week of seeing this, send us a pull request with your work in this repo! Bonus points if your commitments are descriptive, and what future development of the project could be.
 
+# Applicant Notes
+
+## How to run
+* Install Node & Node Package Manager
+* Clone this branch
+* Navigate to project folder ex. through terminal
+* Once within root folder enter "npm ci" to download all packages
+* Enter "npm start" to build & run server
+* Access the provided address through a browser (default: http://localhost:1234)
+
+## Missing
+* Cannot filter by language - I ran out of time
+
+## Further improvements
+* Add filter by language (idea: dropdown list with filter types: "name", "languages", etc. that changes a Component State which could adjust the filtering property.
+* Add error handling to functions and also an ErrorBoundary component
+* Re-factor list sorting and filtering. I do some funny stuff there...
+* Consider using a Context component instead of passing callback function through props.

@@ -37,15 +37,16 @@ export default class MovieList extends React.Component {
 
         const filteredList = listSource.map((element) => {
 
-            if (element.name.toLowerCase().includes(filterValue));
+            if (element.name.toLowerCase().includes(filterValue))
                 return element;
-        })
+        });
 
         const resultList = filteredList.filter((x) => x !== undefined)  // Removes undefined entries
 
+        // Lastly if Sort by most recent is checked we'll do a simple sort.
         if (this.state.sortByDate) {
-            const sortedList = resultList.sort((a, b) => (a.first_air_date < b.first_air_date) ? 1 : -1);
-            this.setState({ filteredList: sortedList });
+            const sortByDateList = resultList.sort((a, b) => (a.first_air_date < b.first_air_date) ? 1 : -1);
+            this.setState({ filteredList: sortByDateList });
         } else {
             this.setState({ filteredList: resultList });
         }
