@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import MovieList from './components/MovieList';
 import './App.css';
 
+/*TODO: 
+show imgs [x] 
+hover show rating (make comonent?) [x]
+search functionality []
+filter language? []
+list shows latest air date []
+
+
+
+*/
+
 function App() {
   const [movies, setMovies] = useState([]);
-  // const []
 
   const getMovieRequest = async () => {
     //TODO: Remove search parameters
