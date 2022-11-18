@@ -7,9 +7,10 @@ import SearchBar from './components/SearchBar';
 /*TODO: 
 show imgs [x] 
 hover show rating (make comonent?) [x]
-search functionality []
+search functionality [x]
 filter language? []
-list shows latest air date []
+list shows latest air date [x]
+movie page []
 
 
 
@@ -23,6 +24,7 @@ function App() {
   const getMovieRequest = async () => {
     //TODO: Remove search parameters
 
+    //It feels like i could just modify the one string instead of doing it with two differen...
     const url = listPopular
       ? `https://api.themoviedb.org/3/tv/popular?api_key=59b4bf87e337717965103693e06ba19c`
       : `https://api.themoviedb.org/3/search/movie?api_key=59b4bf87e337717965103693e06ba19c&query=${searchValue}}`;
@@ -30,8 +32,11 @@ function App() {
     //Data converts response to JSON
     const data = await response.json();
 
-    console.log('data ', data.results);
-    setMovies(data.results);
+    //Sorty by release date descending
+    const sortedData = data.results.sort(
+      (a, b) => new Date(b.first_air_date) - new Date(a.first_air_date)
+    );
+    setMovies(sortedData);
   };
 
   //useEffect react hook calls function when page loads, renders
@@ -42,38 +47,31 @@ function App() {
 
   useEffect(() => {
     getMovieRequest();
-    console.log(searchValue);
   }, [listPopular, searchValue]);
 
   return (
     <div className="root-container">
-      {/* for development only */}
-      <h1>{!listPopular ? 'search mode' : 'popular tv'}</h1>
-      {/* rememeber delete */}
-      <div className="test">
-        <SearchBar
-          className="search-box"
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-        />
+      <div>
+        {!listPopular ? (
+          <SearchBar
+            className="search-box"
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
+        ) : (
+          <div></div>
+        )}
 
         <button
           onClick={() =>
             !listPopular ? setListPopular(true) : setListPopular(false)
           }
         >
-          Show most popular
+          {!listPopular ? 'Show most popular' : 'Search'}
         </button>
-        {/* {!listPopular ?
-        <button
-          onClick={() =>
-            !listPopular ? setListPopular(true) : setListPopular(false)
-          }
-        >
-          Show most popular
-        </button>:<div></div>
-        } */}
       </div>
+      <h1>{!listPopular ? 'Search' : 'Most popular tv right now'}</h1>
+      <hr />
       <MovieList movies={movies} />
     </div>
   );

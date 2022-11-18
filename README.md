@@ -50,6 +50,37 @@ Time to start working on showing average vote on hover.
 
 uses npm install mdb-react-ui-kit . Probably should have set up docker. (ok installed it for nothing, might be making my own hover)
 
-### Hour 3
+### Hour 4
 
 Solved hover with state instead inside of the MovieList component.
+Spent way too much time on hover styling, and me plus design from scrach = bad combo. So it looks a bit ungly for now.
+
+### Hour 5
+
+Start working on search.
+Search works, but not optimally.
+
+### Hour 6
+
+Sorted by date descending. Modified the hover display. Might have done it worse though, i dont know design, what looks good and whatnot.
+
+## Summary
+
+I did not finish this assignment in time, but I'm not dissappointed about it. A majority of goals were hit and I learned postman along the way!
+To start the project follow the readme inside the toxic-frontend-lucas folder.
+
+### Future development
+
+- On hover should just hover THE movie not all movies , so playing around with IDs would be neccessary I bet.
+- Speaking of movieID, when a movie is clicked it should take the user to a detaied page of the movie. Create new folder called "Pages" and route to the movie page.
+- Modify the API url instead having two different ones for (i think). At least handle them differently than today.
+- In addition to as is now, render most popular if no search results are available.
+- Beg someone for a design sketch so that i can fix all the "wonky" styling that the page uses and make it look actually good.
+- Make website responsible by using Responsive Web Design Media Queries.
+- Component library as an npm package would be neat
+- Make button and hover box into a component. And keep making new components in the future.
+- Change the file structure. Don't have all css in app.css. Each component should have their own folder with a corresponding css.
+- Make api "search" call when clicking on a button instead of on change in the input.
+- Search should always be available, even when browsing most popular.
+- Add more filtering options.
+- If i had time i'd use docker, if this project were to grow big and more people develop on it, docker would be god-sent.
