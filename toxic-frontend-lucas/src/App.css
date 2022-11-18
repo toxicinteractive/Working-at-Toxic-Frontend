@@ -1,14 +1,33 @@
 body {
-  background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
-  color: #fff;
+  background: rgb(43, 43, 43);
 }
-
+.root-container {
+  background: rgb(43, 43, 43);
+  color: #fff;
+  display: grid;
+  justify-content: center;
+}
 .movie-info-container {
+  z-index: 10;
   position: absolute;
   right: 0;
-  width: 50%;
-  margin: 8;
+  margin-top: -45%;
+  width: 35%;
   padding: 8;
   background: rgb(43, 43, 43);
   color: white;
+}
+.image {
+  position: relative;
+  left: 0;
+}
+.search-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: 80;
+}
+.test {
+  width: 100%;
 }

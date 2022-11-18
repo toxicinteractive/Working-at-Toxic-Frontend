@@ -1,20 +1,35 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const MovieList = (props) => {
+const MovieList = ({ movies }) => {
   const [isShown, setIsShown] = useState(false);
-
+  const noImage =
+    'https://via.placeholder.com/300x500.png?text=No+Image+For+This+Title';
+  if (!movies.length) {
+    return (
+      <>
+        <h1>No movies found</h1>
+        <img src={noImage} alt="no image" />
+      </>
+    );
+  }
   return (
     <>
-      {props.movies.map((movie, index) => (
+      {movies.map((movie, index) => (
         <div key={index}>
-          <h1>{movie.name}</h1>
+          <h1>{movie.name ?? movie.original_title}</h1>
           <button
             onMouseEnter={() => setIsShown(true)}
             onMouseLeave={() => setIsShown(false)}
           >
             <img
-              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              className="image"
+              src={
+                `https://image.tmdb.org/t/p/w500/${movie.poster_path}` ===
+                `https://image.tmdb.org/t/p/w500/null`
+                  ? noImage
+                  : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+              }
               alt="Movie"
             ></img>
           </button>
