@@ -24,14 +24,14 @@ const App = () =>{
   const getPopularMovies = async () => {
     const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
     const jsonData = await response.json()
-    const movies = jsonData.results
+    const movies = jsonData.results.sort((x, y) => new Date(y.release_date) - new Date(x.release_date))
     setMovies(movies)
   }
   
   const getSearchedMovie = async () => {
     const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchWord}`)
     const jsonData = await response.json()
-    const searchedMovie = jsonData.results
+    const searchedMovie = jsonData.results.sort((x, y) => new Date(y.release_date) - new Date(x.release_date))
     if(searchedMovie){
       setSearchedMovies(searchedMovie)
     }else{
