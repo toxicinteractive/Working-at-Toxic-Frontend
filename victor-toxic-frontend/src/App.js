@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import {BrowserRouter} from "react-router-dom"
+import MovieDetails from "./MovieDetails"
 import MovieCard from "./compontents/MovieCard";
 import NavBar from "./compontents/NavBar";
 import SearchBar from "./compontents/SearchBar";
@@ -13,14 +15,17 @@ const App = () =>{
   const [searchWord, setSearchWord] = useState("")
   const [isSearch, setisSearch] = useState(false)
   
+  //When the page renders it goes to the get getPopularMovies function
   useEffect(() =>{
     getPopularMovies()
   }, [])
   
+  //Gets run every time the searchWord gets updated in the SearchBar
   useEffect(() =>{
     getSearchedMovie()
   }, [searchWord])
   
+  //Fetch all the popular movies and sort them by release date
   const getPopularMovies = async () => {
     const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
     const jsonData = await response.json()
@@ -28,50 +33,62 @@ const App = () =>{
     setMovies(movies)
   }
   
+  //Fetch all the movies that math the searchWord if isSearch is true to prevent it from sending a request when the page first loads
   const getSearchedMovie = async () => {
-    const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchWord}`)
-    const jsonData = await response.json()
-    const searchedMovie = jsonData.results.sort((x, y) => new Date(y.release_date) - new Date(x.release_date))
-    if(searchedMovie){
-      setSearchedMovies(searchedMovie)
-    }else{
-      setSearchedMovies([])
+    if(isSearch){
+      const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchWord}`)
+      const jsonData = await response.json()
+      const searchedMovie = jsonData.results
+      if(searchedMovie){
+        setSearchedMovies(searchedMovie.sort((x, y) => new Date(y.release_date) - new Date(x.release_date)))
+      }else{
+        setSearchedMovies([])
+      }
     }
   }
 
   return (
-    <div className="container">
-      <NavBar 
-      isSearch={isSearch}
-      setisSearch={setisSearch}
-      />
-      {isSearch ? (
-      <>
-      <SearchBar
-      searchWord={searchWord}
-      setSearchWord={setSearchWord}
-      />
-      {searchedMovie.length ? (
+    //"Base" router for the Links inside MovieCard, unfortunantly i did not have the time to finish the routing
+    <BrowserRouter>
+      <div className="container">
+        <NavBar 
+        isSearch={isSearch}
+        setisSearch={setisSearch}
+        />
+        {/* Check if isSearch is true, if it is render the searchbar */}
+        {isSearch ? (
         <>
-        {searchedMovie.map((movie) => 
-          <MovieCard movie={movie} />
-        )}
+        <SearchBar
+        searchWord={searchWord}
+        setSearchWord={setSearchWord}
+        />
+        {/* Check if the results from the query gave any results, if not render "no results" otherwise render all movies in cards */}
+        {searchedMovie.length ? (
+          <>
+            {searchedMovie.map((movie, index) => 
+              <div key={index}>
+                    <MovieCard movie={movie} />
+              </div>
+            )}
+          </>
+        ):
+        (<><h3>No results</h3></>)
+        }
         </>
-      ):
-      (<><h3>No results</h3></>)
-
-      }
-      </>
-      )
-      :
-      (
-        <>        
-        {movies.map((movie) => 
-          <MovieCard movie={movie} />
+        )
+        :
+        (
+          <>
+            {/*Map all movies to an index and render each with the MovieCard component passing in the movie*/}
+            {movies.map((movie, index) => 
+              <div key={index}>
+                <MovieCard movie={movie} />
+              </div>
+            )}
+          </>
         )}
-        </>
-      )}
-    </div>
+      </div>
+    </BrowserRouter>
   )
 }
 
