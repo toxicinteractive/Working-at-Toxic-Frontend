@@ -34,3 +34,13 @@ export const fetchTvShowsWithLang = async ({ lang, page }) => {
 		throw err;
 	}
 };
+
+export const fetchTvById = async (id) => {
+	const url = `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_API_KEY}`;
+	try {
+		const data = await fetchUrl(url);
+		return data;
+	} catch (err) {
+		throw err;
+	}
+};

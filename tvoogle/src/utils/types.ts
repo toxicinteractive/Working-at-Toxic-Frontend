@@ -52,3 +52,18 @@ export class PreviewModel {
 		this.id = id;
 	}
 }
+
+export interface IDetailsData {
+	name: string;
+	first_air_date: string;
+	last_air_date: string;
+	genres: { id: number; name: string }[];
+	homepage: string;
+	in_production: boolean;
+	number_of_episodes: number;
+	number_of_seasons: number;
+	overview: string;
+	poster_path: string;
+	vote_average: number;
+	vote_count: number;
+}

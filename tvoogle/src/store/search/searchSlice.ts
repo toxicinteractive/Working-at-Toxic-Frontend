@@ -55,6 +55,7 @@ export const searchSlice = createSlice({
 		},
 		setCurrentSearchPage: (state, action: PayloadAction<number>) => {
 			state.currentPage = action.payload;
+			state.totalPages = 0;
 		},
 		setError: (state, action: PayloadAction<string>) => {
 			state.error = action.payload;
