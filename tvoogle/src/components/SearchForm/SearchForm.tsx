@@ -8,6 +8,7 @@ import {
 	setCurrentSearchPage,
 } from '../../store/search/searchSlice';
 import { ISearch } from '../../utils/types';
+import Loader from '../Loader/Loader';
 import './SearchForm.scss';
 
 const SearchForm: React.FC = () => {
@@ -69,7 +70,7 @@ const SearchForm: React.FC = () => {
 				</select>
 				<span className="separator"></span>
 				<button className="searchForm__btn" type="submit">
-					{searchStatus === 'loading' ? 'Loading' : 'Search'}
+					{searchStatus === 'loading' ? <Loader color="white" centerParent={true} size="sm" /> : 'Search'}
 				</button>
 			</form>
 			<div className="messageContainer">
