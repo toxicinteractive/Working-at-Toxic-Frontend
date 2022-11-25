@@ -1,8 +1,16 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
+import { rootSaga } from './root-saga';
+import searchReducer from './search/searchSlice';
 
+const saga = createSagaMiddleware();
 export const store = configureStore({
-	reducer: {},
+	reducer: {
+		search: searchReducer,
+	},
+	middleware: [saga],
 });
+saga.run(rootSaga);
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,9 +1,29 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import {
+	searchStart,
+	selectSearchCurrentPage,
+	selectSearchError,
+	selectSearchStatus,
+	setCurrentSearchPage,
+} from '../../store/search/searchSlice';
+import { ISearch } from '../../utils/types';
 import './SearchForm.scss';
 
 const SearchForm: React.FC = () => {
+	const dispatch = useAppDispatch();
+	const searchStatus = useAppSelector(selectSearchStatus);
+	const searchError = useAppSelector(selectSearchError);
+	const currentPage = useAppSelector(selectSearchCurrentPage);
 	const [input, setInput] = useState('');
 	const [lang, setLang] = useState('');
+
+	useEffect(() => {
+		if (searchStatus !== 'idle') {
+			const searchObj = { query: input.trim(), lang: lang, page: currentPage } as ISearch;
+			dispatch(searchStart(searchObj));
+		}
+	}, [currentPage]);
 
 	const handleOnInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setInput(e.currentTarget.value);
@@ -15,8 +35,9 @@ const SearchForm: React.FC = () => {
 
 	const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		console.log('input: ', input.trim());
-		console.log('lang: ', lang);
+		dispatch(setCurrentSearchPage(1));
+		const searchObj = { query: input.trim(), lang: lang, page: currentPage } as ISearch;
+		dispatch(searchStart(searchObj));
 	};
 
 	return (
@@ -48,11 +69,11 @@ const SearchForm: React.FC = () => {
 				</select>
 				<span className="separator"></span>
 				<button className="searchForm__btn" type="submit">
-					'Search'
+					{searchStatus === 'loading' ? 'Loading' : 'Search'}
 				</button>
 			</form>
 			<div className="messageContainer">
-				<p className="message">ERROR HERE</p>;
+				{searchError !== '' && searchStatus !== 'loading' ? <p className="message">{searchError}</p> : ''}
 			</div>
 		</Fragment>
 	);
