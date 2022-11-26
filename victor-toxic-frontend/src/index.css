@@ -6,6 +6,7 @@
   background-color: rgba(85, 11, 11, 0.952);
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   justify-content: center;
   height: 100%;
   min-height: 100vh;
@@ -27,12 +28,21 @@
 .searchBar{
   position: absolute;
   margin-top: 9vh;
+  padding: 2px;
 }
 
 .card{
   position: relative;
   text-align: center;
   padding: 30px;
+}
+.detailedCard{
+  display: flex;
+  padding: 30px;
+  justify-content: space-between;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 
 .moviePoster img{
@@ -45,6 +55,18 @@
   width: 400px;
   position: relative;
   cursor: pointer;
+}
+
+.detailedMoviePoster img{
+  height: 300px;
+  width: 200px;
+  position: relative;
+}
+
+.detailedMoviePoster{
+  height: 300px;
+  width: 200px;
+  position: relative;
 }
 
 .movieRating {
@@ -73,6 +95,15 @@
 .movieTitle{
   padding: 10px;
   max-width: 350px;
+}
+
+.detailedMovieTitle{
+  padding: 10px;
+  max-width: 350px;
+}
+
+.detailedMovieDescription{
+
 }
 
 a:-webkit-any-link {

@@ -6,7 +6,7 @@ const MovieCard = ({movie}) => {
     return(
         <div className="card">
             {/* Link so everytime you press a movie the page redirects the url to /movie.id without refreshing the page */}
-            <Link to={`/${movie.id}`}>
+            <Link to={{pathname: `/movie/${movie.id}`}} state={{movie: movie}}>
                 <div className="moviePoster">
                     {/* Check if image poster exists, otherwise get a dummy poster that says no image */}
                     <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}` ===
