@@ -64,3 +64,6 @@ I would also like to sort movies by language, then I would try and improve the u
 The option to favorite certain movies and save it in the users session or cookie could also be a nice feature or if you want to mark movies you have already watched. You could also implement a rating system since the API alows you to submit ratings https://developers.themoviedb.org/3/movies/rate-movie
 
 The last thing I would consider adding would be pagination to the list of movies, right now you only get the first page of movies.
+
+## Extra pullRequest
+I figured out routing and added a veeery simple description page for movies! Anyway this took a little longer than the 6 hours so just look at the original pull request.
