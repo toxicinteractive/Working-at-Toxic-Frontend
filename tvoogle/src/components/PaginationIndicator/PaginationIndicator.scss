@@ -1,0 +1,16 @@
+.pagination__currentPage {
+	width: 10rem;
+	height: 10rem;
+	border: 3px solid black;
+	border-radius: 1000px;
+	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.6rem;
+	font-weight: 600;
+
+	position: fixed;
+	top: 5rem;
+	left: 5rem;
+}
