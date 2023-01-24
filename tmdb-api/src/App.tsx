@@ -1,5 +1,24 @@
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import styled from "styled-components";
+import MovieList from "./components/MovieList";
+
 function App(): JSX.Element {
-  return <h1 style={{ color: "white" }}>HEJ</h1>;
+  return (
+    <>
+      <BrowserRouter>
+        <Container>
+          <Routes>
+            <Route path="/" element={<MovieList />} />
+            {/* <Route path="/movie/:id" element={<Movie />} /> */}
+          </Routes>
+        </Container>
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;
+
+const Container = styled.div`
+  margin-top: 8px;
+`;
