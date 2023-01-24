@@ -1,13 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { getLanguage, setLanguage } from "../store/language";
 import { useGetMoviesQuery } from "../store/rtkApi";
 import { getSearchQuery, setSearchQuery } from "../store/search";
+import { getSortBy, setSortBy } from "../store/sortMovie";
 import { IApiResponse, IMovie } from "../store/types/Api";
 import SearchBox from "./SearchBox";
+import SortLanguageDropdown from "./SortLanguageDropdown";
+import SortLatestDropdown from "./SortLatestDropdown";
 
 function MovieList(): JSX.Element {
   const { searchQuery } = useSelector(getSearchQuery);
+
+  const { language } = useSelector(getLanguage);
+
+  const { sortBy } = useSelector(getSortBy);
 
   const dispatch = useDispatch();
 
@@ -15,13 +23,42 @@ function MovieList(): JSX.Element {
 
   const link = "https://image.tmdb.org/t/p/w500/";
 
-  const filteredMovies = data?.results.filter((movie: IMovie) =>
-    movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchQuery(event.target.value));
   };
+
+  const handleLanguageChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    if (event.target.value === "Choose language...") {
+      dispatch(setLanguage(""));
+    } else {
+      dispatch(setLanguage(event.target.value));
+    }
+  };
+
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    if (event.target.value === "release_date") {
+      dispatch(setSortBy("release_date"));
+    } else {
+      dispatch(setSortBy(""));
+    }
+  };
+
+  const sortedMovies = data?.results.slice().sort((a: IMovie, b: IMovie) => {
+    if (sortBy === "release_date") {
+      return (
+        new Date(b.release_date).getTime() - new Date(a.release_date).getTime()
+      );
+    }
+    return 0;
+  });
+
+  const filteredMovies = sortedMovies?.filter(
+    (movie: IMovie) =>
+      movie.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (language === "" || movie.original_language === language)
+  );
 
   if (!data) {
     return <h1 style={{ color: "white" }}>Loading...</h1>;
@@ -30,6 +67,12 @@ function MovieList(): JSX.Element {
   return (
     <>
       <SearchBox onSearch={handleSearch} searchQuery={searchQuery} />
+      <SortLanguageDropdown
+        data={data}
+        onSelect={handleLanguageChange}
+        language={language}
+      />
+      <SortLatestDropdown onSort={handleSortChange} sortBy={sortBy} />
       <Container>
         {filteredMovies.map((movie: IMovie) => (
           <div key={movie.id}>
