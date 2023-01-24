@@ -1,5 +1,6 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import styled from "styled-components";
+import Movie from "./components/Movie";
 import MovieList from "./components/MovieList";
 
 function App(): JSX.Element {
@@ -9,7 +10,7 @@ function App(): JSX.Element {
         <Container>
           <Routes>
             <Route path="/" element={<MovieList />} />
-            {/* <Route path="/movie/:id" element={<Movie />} /> */}
+            <Route path="/movie/:id" element={<Movie />} />
           </Routes>
         </Container>
       </BrowserRouter>
