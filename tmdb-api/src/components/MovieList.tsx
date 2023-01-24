@@ -2,14 +2,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useGetMoviesQuery } from "../store/rtkApi";
+import { getSearchQuery, setSearchQuery } from "../store/search";
 import { IApiResponse, IMovie } from "../store/types/Api";
+import SearchBox from "./SearchBox";
 
 function MovieList(): JSX.Element {
+  const { searchQuery } = useSelector(getSearchQuery);
+
   const dispatch = useDispatch();
 
   const { data } = useGetMoviesQuery<IApiResponse>(); // API response
 
   const link = "https://image.tmdb.org/t/p/w500/";
+
+  const filteredMovies = data?.results.filter((movie: IMovie) =>
+    movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSearchQuery(event.target.value));
+  };
 
   if (!data) {
     return <h1 style={{ color: "white" }}>Loading...</h1>;
@@ -17,8 +29,9 @@ function MovieList(): JSX.Element {
 
   return (
     <>
+      <SearchBox onSearch={handleSearch} searchQuery={searchQuery} />
       <Container>
-        {data.results.map((movie: IMovie) => (
+        {filteredMovies.map((movie: IMovie) => (
           <div key={movie.id}>
             <ul style={{ all: "unset" }}>
               <StyledLi>{movie.title}</StyledLi>
