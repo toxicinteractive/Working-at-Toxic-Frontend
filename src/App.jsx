@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { lazy, Suspense } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+import { Routes, Route } from "react-router-dom";
 
+import { MediaContextProvider } from "./context/mediaContext";
+import { Loading } from "./components/LoadingLayout";
+import UpperNavbar from "./components/Navbar";
+
+const Moviepage = lazy(() => import("./pages/Moviepage"));
+const Tvpage = lazy(() => import("./pages/Tvpage"));
+const InfoPage = lazy(() => import("./pages/InfoPage"));
+const Search = lazy(() => import("./pages/Searchpage"));
+
+export default function App() {
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <>
+      <MediaContextProvider>
+        <Suspense fallback={<Loading />}>
+          <UpperNavbar />
+          <Routes>
+            <Route path='/' element={<Moviepage />} />
+            <Route path='/tv-shows' element={<Tvpage />} />
+            <Route path='/search' element={<Search />} />
+            <Route path='/:id' element={<InfoPage />} />
+            <Route path='/tv/:id' element={<InfoPage />} />
+          </Routes>
+        </Suspense>
+      </MediaContextProvider>
+    </>
+  );
 }
-
-export default App

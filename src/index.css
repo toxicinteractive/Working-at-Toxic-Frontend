@@ -1,69 +1,92 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+body{
+  font-family: 'Indie Flower', cursive !important;
+  overflow-x: hidden;
+  background: #0D0D0F !important;
 }
-a:hover {
-  color: #535bf2;
+a{
+  text-decoration: none !important;
 }
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+li{
+  list-style: none;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+
+.navbar{
+  background-color: #5f051f !important;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+#search-box:focus{
+  outline: 2px solid #caf9d2 !important;
+outline: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.movie-card{
+  transition: all .3s ease-in-out;
+}
+.movie-card:hover{
+  transform: scale(1.02);
+  box-shadow: 08px 08px 08px rgba(0,0,0,.1);
+}
+
+
+
+@media screen and (max-width:724px) {
+  #movie-data{
+    flex-direction: column;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  #form{
+    width: 100% !important;
   }
 }
+
+.pagination{
+  display:flex;
+  gap: 0 12px;
+  color: white;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.pagination>li{
+  background-color: #252525;
+  font-size: 18px;
+  padding: .3em .6em;
+  border-radius: 5px;
+  transition: all .2s linear;
+}
+
+.pagination>li:hover{
+  background-color: #36b07d;
+  color: black;
+}
+
+
+
+.pagination > .previous>a{
+  color: white ;
+}
+.pagination > .next>a{
+  color: white ;
+  
+}
+.pagination > .previous>a:hover{
+  color: black ;
+}
+.pagination > .next>a:hover{
+  color: black ;
+}
+
+.selected{
+  background-color:#36b07d  !important;
+  color: black;
+}
+
