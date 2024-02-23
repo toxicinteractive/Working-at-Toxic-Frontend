@@ -1,0 +1,18 @@
+@keyframes fantasticAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-30deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1) rotate(15deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.animation {
+  animation: fantasticAnimation 2s ease-out;
+}

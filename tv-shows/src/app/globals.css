@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 3px ;
+  background-color:#ffc34d
+}
+
+::-webkit-scrollbar-track {
+  background: #111827;
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffc34d;
+  border-radius: 1px;
+  
+  }
